@@ -6,7 +6,15 @@ namespace Roulette
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           
+            Console.WriteLine(RandomNumberGen(0, 38));
+        }
+        public static int RandomNumberGen(int min, int max)//This method is to generate the random number between 0 and 38.
+        {
+            Random random = new Random();
+
+
+            return random.Next(min, max);
         }
     }
 
