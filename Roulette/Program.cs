@@ -7,14 +7,23 @@ namespace Roulette
         static void Main(string[] args)
         {
            
-            Console.WriteLine(RandomNumberGen(0, 38));
+            Console.WriteLine("The number that the ball landed on is" + RandomizeRoulette());
+
+
         }
-        public static int RandomNumberGen(int min, int max)//This method is to generate the random number between 0 and 38.
+        public static int RandomizeRoulette()
         {
+            string[] rouletteArray = new string[] { "00", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", 
+                                                    "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
+                                                    "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36" };
             Random random = new Random();
+            for (int i = 0; i < rouletteArray.Length -1 ; i++)
+            {
+                int j = random.Next(i, rouletteArray.Length);
 
+            }
 
-            return random.Next(min, max);
+            return 1;
         }
     }
 
