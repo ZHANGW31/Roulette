@@ -16,6 +16,7 @@ namespace Roulette
 
 
             int resultNum = RandomizeRoulette(rouletteArray) - 1;
+            int indexNum = resultNum;
             Console.WriteLine("The bin that the ball landed on is " + rouletteArray[resultNum]);
 
             resultNum += 1;
@@ -27,6 +28,21 @@ namespace Roulette
             resultNum += 1;
             Console.WriteLine(BetLowsOrHighs(resultNum));
             Console.WriteLine(BetRowsThirds(resultNum));
+            Console.WriteLine(BetStreet(rouletteArray, indexNum));
+        }
+        public static string BetStreet(string[] stringArray, int currentIndex)
+        {
+            string result = "";
+            string plusOne = "";
+            string minusOne = "";
+
+            if (currentIndex >= 2 && currentIndex <= 36)
+            {
+                plusOne = stringArray[currentIndex + 1];
+                minusOne = stringArray[currentIndex - 1];
+                result = "Street rows winners: " + minusOne + " | " + stringArray[currentIndex] + " | " + plusOne;
+            }
+            return result;
         }
         public static string BetRowsThirds(int resultNum)
         {
