@@ -17,11 +17,53 @@ namespace Roulette
 
             int resultNum = RandomizeRoulette(rouletteArray) - 1;
             Console.WriteLine("The bin that the ball landed on is " + rouletteArray[resultNum]);
-            Console.WriteLine("The result num currently is " + resultNum);
+
             resultNum += 1;
             Console.WriteLine("\nThe winning bets are as follows below: ");
             //Implementation here
             Console.WriteLine(BetEvenOrOdd(resultNum));
+            resultNum -= 1;
+            Console.WriteLine(BetRedOrBlack(rouletteArray[resultNum]));
+            resultNum += 1;
+            Console.WriteLine(BetLowsOrHighs(resultNum));
+            Console.WriteLine(BetRowsThirds(resultNum));
+        }
+        public static string BetRowsThirds(int resultNum)
+        {
+            string result = "";
+
+            if (resultNum <= 12 && resultNum > 0)
+            {
+                result = "First Column Wins";
+            }
+            else if (resultNum >= 13 && resultNum < 25)
+            {
+                result = "Second Column Wins";
+            }
+            else if (resultNum >= 25 && resultNum <= 36)
+            {
+                result = "Third Column Wins";
+            }
+            else
+            {
+                result = "No Columns won";
+            }
+            return result;
+        }
+        public static string BetLowsOrHighs(int resultNum)
+        {
+            string result = "";
+
+            if (resultNum >= 19)
+            {
+                result = "High";
+            }
+            else if (resultNum > 0 && resultNum < 19)
+            {
+                result = "Low";
+            }
+
+            return result;
         }
         public static int RandomizeRoulette(string[] rouletteArray)
         {
@@ -31,6 +73,28 @@ namespace Roulette
             Console.WriteLine("Spinning...");
             Console.WriteLine(realNumber);
             return realNumber;
+        }
+        public static string BetRedOrBlack(string resultValue) 
+        {
+            string isRed = "Red";
+            string isGreen = "Green";
+            string result = "";
+
+            bool red = resultValue.Contains(isRed);
+            bool green = resultValue.Contains(isGreen);
+            if (red)
+            {
+                result = "Red";
+            }
+            else if (green)
+            {
+                result = "Green";
+            }
+            else
+            {
+                result = "Black";
+            }
+            return result;
         }
         public static string BetEvenOrOdd(int resultNum)
         {
