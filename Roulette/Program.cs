@@ -29,6 +29,53 @@ namespace Roulette
             Console.WriteLine(BetLowsOrHighs(resultNum));
             Console.WriteLine(BetRowsThirds(resultNum));
             Console.WriteLine(BetStreet(rouletteArray, indexNum));
+
+            Console.WriteLine();
+            Console.WriteLine(BetSplit(rouletteArray, 29));
+        }
+        public static string BetSplit(string[] stringArray, int currentNum)
+        {
+            string result = "";
+            if (currentNum == 1 )
+            {
+                int rightAdjacency = currentNum + 1;
+                int downAdjacency = currentNum + 3;
+
+                result += "[" + currentNum + "," + rightAdjacency.ToString() + "] " + "[" + currentNum + "," + downAdjacency + "]";
+            }
+            else if (currentNum == 2)
+            {
+
+            }
+            else if (currentNum == 4 || currentNum == 7 || currentNum == 10 || currentNum == 13 || currentNum == 16 || currentNum == 19 ||
+                     currentNum == 22|| currentNum == 25|| currentNum == 28 || currentNum == 31)
+            {
+                int upAdjacency = currentNum - 3;
+                int downAdjacency = currentNum + 3;
+                int rightAdjacency = currentNum + 1;
+                result += "[" + currentNum + "," + upAdjacency + "] " + "[" + currentNum + "," 
+                    + rightAdjacency + "] " + "[" + currentNum + "," + downAdjacency + "]";
+            }
+            else if (currentNum == 5 || currentNum == 8 || currentNum == 11 || currentNum == 14 || currentNum == 17 ||
+                     currentNum == 20 || currentNum == 23 || currentNum == 26 || currentNum == 29 || currentNum == 32)
+            {
+                int upAdjacency = currentNum - 3;
+                int downAdjacency = currentNum + 3;
+                int leftAdjacency = currentNum - 1;
+                int rightAdjacency = currentNum + 1;
+                result += "[" + currentNum + "," + upAdjacency + "] " + "[" + currentNum + ","
+                    + rightAdjacency + "] " + "[" + currentNum + "," + downAdjacency + "] " + "[" + currentNum + "," + leftAdjacency + "]";
+            }
+            else if (currentNum == 6 || currentNum == 9 || currentNum == 12 || currentNum == 15 || currentNum == 18 ||
+                     currentNum == 21 || currentNum == 24 || currentNum == 27 || currentNum == 30 || currentNum == 33)
+            {
+                int upAdjacency = currentNum - 3;
+                int downAdjacency = currentNum + 3;
+                int leftAdjacency = currentNum - 1;
+                result += "[" + currentNum + "," + upAdjacency + "] " 
+                    + "[" + currentNum + "," + downAdjacency + "] " + "[" + currentNum + "," + leftAdjacency + "]";
+            }
+            return result;
         }
         public static string BetStreet(string[] stringArray, int currentIndex)
         {
