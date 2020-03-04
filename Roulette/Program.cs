@@ -15,188 +15,22 @@ namespace Roulette
                                                     "Red : 34", "Black : 35", "Red : 36", "Green : 0", "Green : 00" };
 
 
-            int resultNum = RandomizeRoulette(rouletteArray) - 1;
+            int resultNum = Roulette.RandomizeRoulette(rouletteArray) - 1;
             int indexNum = resultNum;
             Console.WriteLine("The bin that the ball landed on is " + rouletteArray[resultNum]);
 
             resultNum += 1;
             Console.WriteLine("\nThe winning bets are as follows below: ");
             //Implementation here
-            Console.WriteLine(BetEvenOrOdd(resultNum));
-            resultNum -= 1;
-            Console.WriteLine(BetRedOrBlack(rouletteArray[resultNum]));
-            resultNum += 1;
-            Console.WriteLine(BetLowsOrHighs(resultNum));
-            Console.WriteLine(BetRowsThirds(resultNum));
-            Console.WriteLine(BetStreet(rouletteArray, indexNum));
-
-            Console.WriteLine();
-            Console.WriteLine(BetSplit(rouletteArray, 29));
+            Console.WriteLine(Roulette.BetEvenOrOdd(resultNum));
+            
+            Console.WriteLine(Roulette.BetRedOrBlack(rouletteArray[indexNum]));
+            Console.WriteLine(Roulette.BetLowsOrHighs(resultNum));
+            Console.WriteLine(Roulette.BetRowsThirds(resultNum));
+            Console.WriteLine(Roulette.BetStreet(rouletteArray, indexNum));           
+            Console.WriteLine("Split win cases: " + Roulette.BetSplit(resultNum));
+            Console.WriteLine(Roulette.BetSixLine(resultNum));
         }
-        public static string BetSplit(string[] stringArray, int currentNum)
-        {
-            string result = "";
-            if (currentNum == 1 )
-            {
-                int rightAdjacency = currentNum + 1;
-                int downAdjacency = currentNum + 3;
-
-                result += "[" + currentNum + "," + rightAdjacency.ToString() + "] " + "[" + currentNum + "," + downAdjacency + "]";
-            }
-            else if (currentNum == 2)
-            {
-
-            }
-            else if (currentNum == 4 || currentNum == 7 || currentNum == 10 || currentNum == 13 || currentNum == 16 || currentNum == 19 ||
-                     currentNum == 22|| currentNum == 25|| currentNum == 28 || currentNum == 31)
-            {
-                int upAdjacency = currentNum - 3;
-                int downAdjacency = currentNum + 3;
-                int rightAdjacency = currentNum + 1;
-                result += "[" + currentNum + "," + upAdjacency + "] " + "[" + currentNum + "," 
-                    + rightAdjacency + "] " + "[" + currentNum + "," + downAdjacency + "]";
-            }
-            else if (currentNum == 5 || currentNum == 8 || currentNum == 11 || currentNum == 14 || currentNum == 17 ||
-                     currentNum == 20 || currentNum == 23 || currentNum == 26 || currentNum == 29 || currentNum == 32)
-            {
-                int upAdjacency = currentNum - 3;
-                int downAdjacency = currentNum + 3;
-                int leftAdjacency = currentNum - 1;
-                int rightAdjacency = currentNum + 1;
-                result += "[" + currentNum + "," + upAdjacency + "] " + "[" + currentNum + ","
-                    + rightAdjacency + "] " + "[" + currentNum + "," + downAdjacency + "] " + "[" + currentNum + "," + leftAdjacency + "]";
-            }
-            else if (currentNum == 6 || currentNum == 9 || currentNum == 12 || currentNum == 15 || currentNum == 18 ||
-                     currentNum == 21 || currentNum == 24 || currentNum == 27 || currentNum == 30 || currentNum == 33)
-            {
-                int upAdjacency = currentNum - 3;
-                int downAdjacency = currentNum + 3;
-                int leftAdjacency = currentNum - 1;
-                result += "[" + currentNum + "," + upAdjacency + "] " 
-                    + "[" + currentNum + "," + downAdjacency + "] " + "[" + currentNum + "," + leftAdjacency + "]";
-            }
-            return result;
-        }
-        public static string BetStreet(string[] stringArray, int currentIndex)
-        {
-            string result = "";
-            string plusOne = "";
-            string minusOne = "";
-
-            if (currentIndex >= 2 && currentIndex <= 36)
-            {
-                plusOne = stringArray[currentIndex + 1];
-                minusOne = stringArray[currentIndex - 1];
-                result = "Street rows winners: " + minusOne + " | " + stringArray[currentIndex] + " | " + plusOne;
-            }
-            return result;
-        }
-        public static string BetRowsThirds(int resultNum)
-        {
-            string result = "";
-
-            if (resultNum <= 12 && resultNum > 0)
-            {
-                result = "First Column Wins";
-            }
-            else if (resultNum >= 13 && resultNum < 25)
-            {
-                result = "Second Column Wins";
-            }
-            else if (resultNum >= 25 && resultNum <= 36)
-            {
-                result = "Third Column Wins";
-            }
-            else
-            {
-                result = "No Columns won";
-            }
-            return result;
-        }
-        public static string BetLowsOrHighs(int resultNum)
-        {
-            string result = "";
-
-            if (resultNum >= 19)
-            {
-                result = "High";
-            }
-            else if (resultNum > 0 && resultNum < 19)
-            {
-                result = "Low";
-            }
-
-            return result;
-        }
-        public static int RandomizeRoulette(string[] rouletteArray)
-        {
-            Random random = new Random();
-            int resultIndex = random.Next(rouletteArray.Length - 1);
-            int realNumber = resultIndex + 1;
-            Console.WriteLine("Spinning...");
-            Console.WriteLine(realNumber);
-            return realNumber;
-        }
-        public static string BetRedOrBlack(string resultValue) 
-        {
-            string isRed = "Red";
-            string isGreen = "Green";
-            string result = "";
-
-            bool red = resultValue.Contains(isRed);
-            bool green = resultValue.Contains(isGreen);
-            if (red)
-            {
-                result = "Red";
-            }
-            else if (green)
-            {
-                result = "Green";
-            }
-            else
-            {
-                result = "Black";
-            }
-            return result;
-        }
-        public static string BetEvenOrOdd(int resultNum)
-        {
-            string resultString = "";
-
-            if (resultNum > 36)
-            {
-                resultString += "It is neither even or odd.";
-            }
-            resultNum %= 2;
-            if (resultNum == 0)
-            {
-                resultString += "Evens";
-            }
-            else
-            {
-                resultString += "Odds";
-            }
-
-            return resultString;
-
-        }
-    }
-
-    class Roulette
-    {
-        //To do
-        //Win cases: 
-        //Numbers: the number of the bin
-        //Evens or Odds: even or odd numbers
-        //Reds or Blacks: red or black colored numbers
-        //Lows or Highs: 1:18 (low) or 19:38 (high)
-        //Dozens: row thirds, 1:12, 13:24, 25:36
-        //Columns: first, second, or third columns
-        //street: rows, 1/2/3 or 22/23/24
-        //6 Numbers: double rows , 1/2/3/4/5/6 or 22/23/24/25/26
-        //Split: at the edge of any two contiguous numbers 1/2 , 11/14,  and 35/36
-        //Corner: at the intersection of any four contiuous numbers , 1/2/4/5 , or 23/24/26/27
-
 
     }
 }
