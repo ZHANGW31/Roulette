@@ -16,7 +16,11 @@ namespace Roulette
         //6 Numbers: double rows , 1/2/3/4/5/6 or 22/23/24/25/26
         //Split: at the edge of any two contiguous numbers 1/2 , 11/14,  and 35/36
         //Corner: at the intersection of any four contiuous numbers , 1/2/4/5 , or 23/24/26/27
-
+        public static string BetCorner (int resultNum)
+        {
+            string result = "";
+            return result;
+        }
         public static string BetSixLine(int resultNum)
         {
             string result = "";
@@ -73,10 +77,8 @@ namespace Roulette
             {
                 result = "No winning six lines.";
             }
-
             return result;
         }
-
         public static string BetSplit(int currentNum)
         {
             string result = "";
@@ -98,7 +100,6 @@ namespace Roulette
                 int rightAdjacency = currentNum + 1;
                 result += "[" + currentNum + "," + rightAdjacency + "] " + "[" + currentNum + "," + downAdjacency + "] "
                     + "[" + currentNum + "," + leftAdjacency + "]";
-
             }
             else if (currentNum == 3)
             {
@@ -113,7 +114,6 @@ namespace Roulette
                 int rightAdjacency = currentNum + 1;
                 result += "[" + currentNum + "," + upAdjacency + "] " + "[" + currentNum + ","
                     + rightAdjacency + "] ";
-
             }
             else if (currentNum == 35)
             {
@@ -267,7 +267,6 @@ namespace Roulette
             {
                 resultString += "Odds";
             }
-
             return resultString;
 
         }
