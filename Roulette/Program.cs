@@ -26,6 +26,7 @@ namespace Roulette
             Console.WriteLine(Roulette.BetStreet(rouletteArray, indexNum));           
             Console.WriteLine("Split win cases: " + Roulette.BetSplit(resultNum));
             Console.WriteLine(Roulette.BetSixLine(resultNum));
+            Console.WriteLine("Corner win cases: " + Roulette.BetCorner(resultNum));
         }
 
     }

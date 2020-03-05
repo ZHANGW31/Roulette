@@ -24,26 +24,6 @@ namespace Roulette
         {
             string result = "";
 
-            //if (resultNum == 1) result = "Winning Corner bet numbers: 1/2/4/5";
-            //if (resultNum == 2) result = "Winning Corner bet numbers: 1/2/4/5 or 2/3/5/6";
-            //if (resultNum == 3) result = "Winning Corner bet numbers: 2/3/5/6";
-            //if (resultNum == 4) result = "Winning Corner bet numbers: 1/2/4/5 or 4/5/7/8";
-            //if (resultNum == 5) result = "Winning Corner bet numbers: 1/2/4/5 or 2/3/5/6 or 4/5/7/8 or 5/6/8/9";
-            //if (resultNum == 6) result = "Winning Corner bet numbers: 2/3/5/6 or 5/6/8/9";
-            //if (resultNum == 7) result = "Winning Corner bet numbers: 4/5/7/8 or 7/8/10/11";
-            //if (resultNum == 8) result = "Winning Corner bet numbers:  ";
-            //if (resultNum == 9) result = "Winning Corner bet numbers: ";
-            //if (resultNum == 10) result = "Winning Corner bet numbers: ";
-            //if (resultNum == 11) result = "Winning Corner bet numbers: ";
-            //if (resultNum == 12) result = "Winning Corner bet numbers: ";
-            //if (resultNum == 13) result = "Winning Corner bet numbers: ";
-            //if (resultNum == 14) result = "Winning Corner bet numbers: ";
-            //if (resultNum == 15) result = "Winning Corner bet numbers: ";
-            //if (resultNum == 16) result = "Winning Corner bet numbers: ";
-            //if (resultNum == 17) result = "Winning Corner bet numbers: ";
-            //if (resultNum == 18) result = "Winning Corner bet numbers: ";
-            //if (resultNum == 19) result = "Winning Corner bet numbers: ";
-
             int[] verticalColumnOne = new int[] { 4, 7, 10, 13, 16, 19, 22, 25, 28, 31 };
             int[] verticalColumnTwo = new int[] { 5, 8, 11, 14, 17, 20, 23, 26, 29, 32 };
             int[] verticalColumnThree = new int[] { 6, 9, 12, 15, 18, 21, 24, 27, 30, 33 };
@@ -65,8 +45,47 @@ namespace Roulette
                 int rightAdjacent = resultNum + 1;
                 int belowAdjacent = resultNum + 3;
                 int belowRight = resultNum + 4;
-            }
 
+                result += "[" + leftAdjacent + "," + resultNum + "," + belowLeft + "," + below + "]" +
+                    " or [" + resultNum + "," + rightAdjacent + "," + belowAdjacent + "," + belowRight + "]";
+            }
+            if (resultNum == 3)
+            {
+                int leftAdjacent = resultNum - 1;
+                int leftBelow = resultNum + 2;
+                int rightBelow = resultNum + 3;
+
+                result += "[" + leftAdjacent + "," + resultNum + "," + leftBelow + "," + rightBelow + "]";
+            }
+            if (resultNum == 34)
+            {
+                int upperAdjacent = resultNum - 3;
+                int upperRight = resultNum - 2;
+                int rightAdjacent = resultNum + 1;
+
+                result += "[" + upperAdjacent + "," + upperRight + "," + resultNum + "," + rightAdjacent + "]";
+            }
+            if (resultNum == 35)
+            {
+                int leftUpperLeft = resultNum - 4;
+                int leftUpperRight = resultNum - 3;
+                int leftAdjacent = resultNum - 1;
+
+                int rightUpperLeft = resultNum - 3;
+                int rightUpperRight = resultNum - 2;
+                int rightAdjacent = resultNum + 1;
+
+                result += "[" + leftUpperLeft + "," + leftUpperRight + "," + leftAdjacent + "," + resultNum + "]" +
+                    " or [" + rightUpperLeft + "," + rightUpperRight + "," + resultNum + "," + rightAdjacent + "]";
+            }
+            if (resultNum == 36)
+            {
+                int upperLeft = resultNum - 4;
+                int upperRight = resultNum - 3;
+                int leftAdjacent = resultNum - 1;
+
+                result += "[" + upperLeft + "," + upperRight + "," + leftAdjacent + "," + resultNum + "]";
+            }
             if (verticalColumnOne.Contains(resultNum))
             {
                 int upperNum = resultNum - 3;
@@ -78,7 +97,7 @@ namespace Roulette
                 int lowerCornerRight = resultNum + 4;
 
                 result += "["+ upperNum + "," + upperRight +","+ resultNum +"," + rightNum + "]" +
-                    "[" + resultNum + "," + lowerRight + "," + below + "," + lowerCornerRight + "]"; ;
+                    " or [" + resultNum + "," + lowerRight + "," + below + "," + lowerCornerRight + "]"; ;
             }
             else if (verticalColumnTwo.Contains(resultNum))
             {
@@ -99,9 +118,9 @@ namespace Roulette
                 int rightLowerRight = resultNum + 4;
 
                 result += "["+ leftUpperCorner +"," + leftUpperRight +","+ leftAdjacent + "," + resultNum + "] "
-                  +  "[" + rightUpperCorner + "," + rightUpperRight + "," + rightAdjacent + "," + resultNum + "] " +
-                  "[" + leftLowerCorner + "," + resultNum + "," + leftLowerLeft + "," + leftCornerBelow + "] " +
-                    "[" + resultNum + "," + rightLowerCorner + "," + rightBelow + "," + rightLowerRight + "] ";
+                  +  " or [" + rightUpperCorner + "," + rightUpperRight + "," + rightAdjacent + "," + resultNum + "] " +
+                  " or [" + leftLowerCorner + "," + resultNum + "," + leftLowerLeft + "," + leftCornerBelow + "] " +
+                    " or [" + resultNum + "," + rightLowerCorner + "," + rightBelow + "," + rightLowerRight + "] ";
             }
             else if (verticalColumnThree.Contains(resultNum))
             {
@@ -114,11 +133,8 @@ namespace Roulette
                 int belowAdjacent = resultNum + 3;
 
                 result += "[" + leftUpperleft + "," + leftUpperRight + "," + leftAdjacent + "," + resultNum + "]" +
-                    "[" + lowerCornerLeft + "," + resultNum + "," + lowerLeft + "," + belowAdjacent + "]"; ;
+                    " or [" + lowerCornerLeft + "," + resultNum + "," + lowerLeft + "," + belowAdjacent + "]"; ;
             }
-            
-
-
             return result;
         }
         public static string BetSixLine(int resultNum)
