@@ -21,7 +21,7 @@ namespace Roulette
             Console.WriteLine("\nThe winning bets are as follows below: ");
             //Implementation here
             Console.WriteLine("\nEvens or Odds bets: " + Roulette.BetEvenOrOdd(resultNum));           
-            Console.WriteLine("\nRed or Black bets: " + Roulette.BetRedOrBlack(rouletteArray[indexNum]));
+            Console.WriteLine("\nGreen, Red or Black bets: " + Roulette.BetRedOrBlack(rouletteArray[indexNum]));
             Console.WriteLine("\nLows or Highs bets: " + Roulette.BetLowsOrHighs(resultNum));
             Console.WriteLine("\nRows bets: " + Roulette.BetRowsThirds(resultNum));
             Console.WriteLine("\nStreet bets: "+Roulette.BetStreet(rouletteArray, indexNum));           

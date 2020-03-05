@@ -8,7 +8,6 @@ namespace Roulette
 {
     public class Roulette
     {
-        //To do
         //Win cases: 
         //Numbers: the number of the bin
         //Evens or Odds: even or odd numbers
@@ -27,7 +26,10 @@ namespace Roulette
             int[] verticalColumnOne = new int[] { 4, 7, 10, 13, 16, 19, 22, 25, 28, 31 };
             int[] verticalColumnTwo = new int[] { 5, 8, 11, 14, 17, 20, 23, 26, 29, 32 };
             int[] verticalColumnThree = new int[] { 6, 9, 12, 15, 18, 21, 24, 27, 30, 33 };
-
+            if (resultNum == 37 || resultNum == 38)
+            {
+                result = "The ball landed in green. No winning corner bets.";
+            }
             if(resultNum == 1)
             {
                 int rightAdjacent = resultNum + 1;
@@ -340,8 +342,7 @@ namespace Roulette
             Random random = new Random();
             int resultIndex = random.Next(rouletteArray.Length - 1);
             int realNumber = resultIndex + 1;
-            Console.WriteLine("Spinning...");
-            
+            Console.WriteLine("Spinning...");          
             return realNumber;
         }
         public static string BetRedOrBlack(string resultValue)
@@ -370,9 +371,9 @@ namespace Roulette
         {
             string resultString = "";
 
-            if (resultNum > 36)
+            if (resultNum == 36 || resultNum == 37)
             {
-                resultString += "It is neither even or odd.";
+                resultString = "It is neither even or odd.";
             }
             resultNum %= 2;
             if (resultNum == 0)
