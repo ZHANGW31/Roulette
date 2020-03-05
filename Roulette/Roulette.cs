@@ -341,7 +341,7 @@ namespace Roulette
             int resultIndex = random.Next(rouletteArray.Length - 1);
             int realNumber = resultIndex + 1;
             Console.WriteLine("Spinning...");
-            Console.WriteLine(realNumber);
+            
             return realNumber;
         }
         public static string BetRedOrBlack(string resultValue)

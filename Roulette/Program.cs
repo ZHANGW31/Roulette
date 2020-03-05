@@ -13,20 +13,21 @@ namespace Roulette
                                                     "Black : 20", "Red : 21", "Black : 22", "Red : 23", "Black : 24", "Red : 25", "Black : 26",
                                                     "Red : 27", "Black : 28", "Black : 29", "Red : 30", "Black : 31", "Red : 32", "Black : 33",
                                                     "Red : 34", "Black : 35", "Red : 36", "Green : 0", "Green : 00" };
+
             int resultNum = Roulette.RandomizeRoulette(rouletteArray) - 1;
             int indexNum = resultNum;
-            Console.WriteLine("The bin that the ball landed on is " + rouletteArray[resultNum]);
+            Console.WriteLine("\nThe bin that the ball landed on is " + rouletteArray[resultNum]);
             resultNum += 1;
             Console.WriteLine("\nThe winning bets are as follows below: ");
             //Implementation here
-            Console.WriteLine(Roulette.BetEvenOrOdd(resultNum));           
-            Console.WriteLine(Roulette.BetRedOrBlack(rouletteArray[indexNum]));
-            Console.WriteLine(Roulette.BetLowsOrHighs(resultNum));
-            Console.WriteLine(Roulette.BetRowsThirds(resultNum));
-            Console.WriteLine(Roulette.BetStreet(rouletteArray, indexNum));           
-            Console.WriteLine("Split win cases: " + Roulette.BetSplit(resultNum));
-            Console.WriteLine(Roulette.BetSixLine(resultNum));
-            Console.WriteLine("Corner win cases: " + Roulette.BetCorner(resultNum));
+            Console.WriteLine("\nEvens or Odds bets: " + Roulette.BetEvenOrOdd(resultNum));           
+            Console.WriteLine("\nRed or Black bets: " + Roulette.BetRedOrBlack(rouletteArray[indexNum]));
+            Console.WriteLine("\nLows or Highs bets: " + Roulette.BetLowsOrHighs(resultNum));
+            Console.WriteLine("\nRows bets: " + Roulette.BetRowsThirds(resultNum));
+            Console.WriteLine("\nStreet bets: "+Roulette.BetStreet(rouletteArray, indexNum));           
+            Console.WriteLine("\nSplit win cases: " + Roulette.BetSplit(resultNum));
+            Console.WriteLine("\nSix Line win cases: " + Roulette.BetSixLine(resultNum));
+            Console.WriteLine("\nCorner win cases: " + Roulette.BetCorner(resultNum));
         }
 
     }
