@@ -19,7 +19,7 @@ namespace Roulette
         //6 Numbers: double rows , 1/2/3/4/5/6 or 22/23/24/25/26
         //Split: at the edge of any two contiguous numbers 1/2 , 11/14,  and 35/36
         //Corner: at the intersection of any four contiuous numbers , 1/2/4/5 , or 23/24/26/27
-        public static string BetCorner (int resultNum)
+        public static string BetCorner (int resultNum)//corner bets are the intersection of 4 continous numbers.
         {
             string result = "";
 
@@ -139,7 +139,7 @@ namespace Roulette
             }
             return result;
         }
-        public static string BetSixLine(int resultNum)
+        public static string BetSixLine(int resultNum) //Six line is when a number falls within two possible rows depending on the number location
         {
             string result = "";
 
@@ -197,7 +197,7 @@ namespace Roulette
             }
             return result;
         }
-        public static string BetSplit(int currentNum)
+        public static string BetSplit(int currentNum) //Bet split wins are the possible numbers directly adjacent to the ball in bin number
         {
             string result = "";
             if (currentNum == 37 || currentNum == 38)
@@ -278,7 +278,7 @@ namespace Roulette
             }
             return result;
         }
-        public static string BetStreet(string[] stringArray, int currentIndex)
+        public static string BetStreet(string[] stringArray, int currentIndex) //street bet is the winning bin number, and the direct 1 up and 1 down from it
         {
             string result = "";
             string plusOne = "";
@@ -296,7 +296,7 @@ namespace Roulette
             }
             return result;
         }
-        public static string BetRowsThirds(int resultNum)
+        public static string BetRowsThirds(int resultNum) //Bet row thirds is with the bets split into 3 columns. 1-12, 13-25, and 25-36
         {
             string result = "";
 
@@ -318,7 +318,7 @@ namespace Roulette
             }
             return result;
         }
-        public static string BetLowsOrHighs(int resultNum)
+        public static string BetLowsOrHighs(int resultNum) //Lows bets are 1-18, high are 19 - 36
         {
             string result = "";
 
@@ -337,7 +337,7 @@ namespace Roulette
 
             return result;
         }
-        public static int RandomizeRoulette(string[] rouletteArray)
+        public static int RandomizeRoulette(string[] rouletteArray) // this method creates the random number for the bin that the ball lands in.
         {
             Random random = new Random();
             int resultIndex = random.Next(rouletteArray.Length - 1);
@@ -345,7 +345,7 @@ namespace Roulette
             Console.WriteLine("Spinning...");          
             return realNumber;
         }
-        public static string BetRedOrBlack(string resultValue)
+        public static string BetRedOrBlack(string resultValue) // Checks if the winning ball is black or red to determine the reds or blacks bet wins.
         {
             string isRed = "Red";
             string isGreen = "Green";
@@ -367,7 +367,7 @@ namespace Roulette
             }
             return result;
         }
-        public static string BetEvenOrOdd(int resultNum)
+        public static string BetEvenOrOdd(int resultNum) // determines whether or not the winning ball is even or odd, for the even or odd bets.
         {
             string resultString = "";
 
